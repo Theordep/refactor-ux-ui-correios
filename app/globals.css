@@ -1,0 +1,106 @@
+@import "tailwindcss";
+
+/*
+  Tokens do design system (ver design-system/correios-precos-prazos/MASTER.md).
+  Paleta: azul e amarelo de referência à marca, com contraste AA verificado:
+  - texto #0F172A sobre #FFFFFF ≈ 17:1
+  - texto secundário #475569 sobre #FFFFFF ≈ 7.5:1
+  - branco sobre azul #00416B ≈ 10.6:1
+  - azul #00416B sobre amarelo #FFD400 ≈ 8:1
+  - borda de controles #7D8799 sobre #FFFFFF ≈ 3.6:1 (WCAG 1.4.11, mínimo 3:1)
+*/
+:root {
+  /* Tema só claro: evita que checkbox e calendário nativos fiquem escuros no modo escuro do sistema. */
+  color-scheme: light;
+  --azul: #00416b;
+  --azul-escuro: #002c4a;
+  --azul-claro: #e6f0f7;
+  --amarelo: #ffd400;
+  --amarelo-claro: #fff7cc;
+  --fundo: #f5f7fa;
+  --superficie: #ffffff;
+  --texto: #0f172a;
+  --texto-suave: #475569;
+  --borda: #7d8799;
+  --borda-suave: #e2e8f0;
+  --sucesso: #047857;
+  --sucesso-claro: #ecfdf5;
+  --erro: #b91c1c;
+  --erro-claro: #fef2f2;
+  --foco: #0b5cad;
+}
+
+@theme inline {
+  --color-azul: var(--azul);
+  --color-azul-escuro: var(--azul-escuro);
+  --color-azul-claro: var(--azul-claro);
+  --color-amarelo: var(--amarelo);
+  --color-amarelo-claro: var(--amarelo-claro);
+  --color-fundo: var(--fundo);
+  --color-superficie: var(--superficie);
+  --color-texto: var(--texto);
+  --color-texto-suave: var(--texto-suave);
+  --color-borda: var(--borda);
+  --color-borda-suave: var(--borda-suave);
+  --color-sucesso: var(--sucesso);
+  --color-sucesso-claro: var(--sucesso-claro);
+  --color-erro: var(--erro);
+  --color-erro-claro: var(--erro-claro);
+  --color-foco: var(--foco);
+  --font-sans: var(--font-atkinson), system-ui, sans-serif;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--fundo);
+  color: var(--texto);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* Em @layer base para que as classes utilitárias (ex.: foco amarelo no cabeçalho) possam sobrescrever. */
+@layer base {
+  /* Sem o atraso de 300 ms do toque duplo no celular. */
+  a,
+  button,
+  label,
+  summary,
+  input,
+  select {
+    touch-action: manipulation;
+  }
+
+  /* Foco sempre visível para quem navega pelo teclado. */
+  :focus-visible {
+    outline: 3px solid var(--foco);
+    outline-offset: 2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@keyframes surgir {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.animar-surgir {
+  animation: surgir 280ms ease-out both;
+}
