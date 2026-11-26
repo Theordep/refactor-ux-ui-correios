@@ -129,6 +129,7 @@ const MELHORIAS: Melhoria[] = [
       "As opções ficam recolhidas em “Serviços adicionais”, já que a maioria das pessoas não precisa delas (revelação progressiva).",
     ],
     ondeAplicado: "Serviços adicionais",
+    antes: { src: "/analise/06-termos-tecnicos.png", largura: 698, altura: 219, alt: "Recortes do site atual: as opções Mão própria, Aviso de recebimento - AR e Declaração de Valor aparecem sem explicação nem preço, e o aviso lateral usa a sigla DH sem explicar" },
     depois: { src: "/prototipo/servicos-adicionais.png", largura: 769, altura: 381, alt: "Protótipo: serviços adicionais explicados em linguagem simples, com o preço de cada um" },
   },
   {
