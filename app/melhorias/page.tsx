@@ -154,18 +154,22 @@ const MELHORIAS: Melhoria[] = [
   },
   {
     titulo: "Pouca ajuda para evitar erros",
-    heuristica: "Prevenção de erros (Nielsen #5)",
+    heuristica: "Prevenção de erros (Nielsen #5) · Ajudar a reconhecer e corrigir erros (#9)",
     problemas: [
-      "Não há confirmação de que o CEP digitado é o lugar certo.",
-      "O botão “Não sei o CEP” leva para outro sistema e tira a pessoa do formulário.",
+      "Ao digitar um CEP incompleto (01310) ou inexistente (99999999) e sair do campo, nada acontece: não há aviso nem confirmação do lugar.",
+      "Os erros só aparecem depois de clicar em “Calcular”, um de cada vez, em caixas de alerta do navegador: primeiro “Selecione o tipo de serviço desejado.”, depois “Cep de Origem Inválido!”, depois “Informe o peso para o cálculo de preços da sua encomenda.”",
+      "“Cep de Origem Inválido!” não diz o que está errado nem como corrigir.",
+      "“Não sei o CEP” abre outro sistema inteiro numa janela por cima, com menu próprio e um CAPTCHA para resolver antes de buscar.",
     ],
     solucoes: [
       "Ao completar o CEP, a cidade ou o estado aparece logo abaixo do campo.",
-      "Os erros aparecem ao lado de cada campo e também num resumo no topo, com links que levam direto ao campo.",
-      "“Não sei o CEP” abre uma busca na própria página, e há um botão para inverter origem e destino.",
+      "Todos os erros aparecem de uma vez: ao lado de cada campo e num resumo no topo, com links que levam direto ao campo.",
+      "As mensagens dizem o que fazer (“O CEP tem 8 números. Confira se faltou algum.”).",
+      "“Não sei o CEP” abre uma busca simples por cidade, sem CAPTCHA, e preenche o campo com um clique. Há também um botão para inverter origem e destino.",
       "Se o envio der errado, o que foi preenchido continua no formulário.",
     ],
     ondeAplicado: "Campos de CEP e validação",
+    antes: { src: "/analise/07-validacao-cep.png", largura: 1046, altura: 378, alt: "Site atual: formulário com CEP incompleto e CEP inválido sem nenhum aviso, e a janela do “Não sei o CEP” com o sistema Busca CEP e um CAPTCHA" },
     depois: { src: "/prototipo/validacao.png", largura: 1366, altura: 800, alt: "Protótipo: resumo de erros no topo com links para cada campo e mensagens ao lado dos campos" },
   },
   {
